@@ -9,7 +9,7 @@ const Upload = () => {
    
 
   return (
-    <div className="flex flex-col min-h-screen bg-rose-300">
+    <div className="flex flex-col min-h-screen bg-emerald-400">
 
 <div className="flex flex-col justify-center items-center p-8">
 
