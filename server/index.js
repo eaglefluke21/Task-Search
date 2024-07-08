@@ -14,7 +14,7 @@ dotenv.config();
 const port = process.env.PORT;
 
 const corsOptions = {
-    origin: 'https://task-search.vercel.app/', 
+    origin: 'https://task-search.vercel.app', 
     optionsSuccessStatus: 200, 
   };
 
