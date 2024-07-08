@@ -10,7 +10,7 @@ const Home = () => {
     const [results, setResults] = useState([]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-emerald-300">
+    <div className="flex flex-col min-h-screen bg-emerald-400">
 
         <div className="flex flex-col justify-center items-center p-8">
         <h1 className=" text-xl text-center font-anta text-black p-20 whitespace-nowrap sm:text-3xl   ">
