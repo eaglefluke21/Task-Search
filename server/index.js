@@ -5,7 +5,7 @@ import connect from './Config/db.js';
 import searchrouter from './routes/search.js';
 import datarouter from './routes/data.js';
 import suggestionrouter from './routes/suggest.js';
-import ServerlessHttp from 'serverless-http';
+
 
 connect();
 
@@ -14,7 +14,7 @@ dotenv.config();
 const port = process.env.PORT;
 
 const corsOptions = {
-    origin: 'http://localhost:5173', 
+    origin: 'https://task-search.vercel.app/', 
     optionsSuccessStatus: 200, 
   };
 
@@ -36,4 +36,3 @@ app.listen(port , function(){
     console.log(`server is listening at http://localhost:${port}`);
 });
 
-export const handler = ServerlessHttp(app);
