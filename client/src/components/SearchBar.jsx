@@ -1,4 +1,5 @@
 import React, { useState ,useEffect } from 'react';
+import apiAxios from '../services/api';
 
 const SearchBar = ({ setResults }) => {
  
@@ -20,12 +21,8 @@ const SearchBar = ({ setResults }) => {
       if (query.length > 0) {
         try {
 
-          const backendurl = 'http://localhost:3000';
-          const url = `${backendurl}/api/suggest?q=${query}`;
-
-          const response = await fetch(url);
-          const data = await response.json();
-          setSuggestions(data);
+          const response = await apiAxios.get(`/api/suggest?q=${query}`);
+             setSuggestions(response.data);
         
         } catch (error) {
           console.error("Error fetching suggestions:", error);
@@ -48,13 +45,9 @@ const SearchBar = ({ setResults }) => {
    
     try {
 
-
-      const backendurl = 'http://localhost:3000';
-      const url = `${backendurl}/api/search?q=${query}`;
-
-      const response = await fetch(url);
-      const data = await response.json();
-      setResults(data);
+      const response = await apiAxios.get(`/api/search?q=${query}`);
+  
+      setResults(response.data);
 
       setQuery(''); // Reset query after search
       setIsSuggestionSelected(false)

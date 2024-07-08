@@ -5,6 +5,7 @@ import connect from './Config/db.js';
 import searchrouter from './routes/search.js';
 import datarouter from './routes/data.js';
 import suggestionrouter from './routes/suggest.js';
+import ServerlessHttp from 'serverless-http';
 
 connect();
 
@@ -34,3 +35,5 @@ app.get('/', function(req,res){
 app.listen(port , function(){
     console.log(`server is listening at http://localhost:${port}`);
 });
+
+export const handler = ServerlessHttp(app);

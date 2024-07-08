@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import apiAxios from '../services/api';
 
 const InsertForm = () => {
   const [title, setTitle] = useState('');
@@ -8,23 +9,24 @@ const InsertForm = () => {
     e.preventDefault();
     try {
 
-        
-        const backendurl = 'http://localhost:3000';
-        const url = `${backendurl}/api/insert`;
 
-
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await apiAxios.post('/api/insert',{
+        title,
+        description,
+      },{
+        headers:{
+          'Content-Type':'application/json',
         },
-        body: JSON.stringify({ title, description }),
       });
-      const data = await response.json();
-      if (response.ok) {
+        
+      console.log('Response:', response.data);
+
+      console.log('Response status', response.status);
+      
+      if (response.status === 201) {
         alert('Item inserted successfully');
       } else {
-        alert(`Error: ${data.error}`);
+        alert(`Error: ${response.data.error}`);
       }
     } catch (error) {
       console.error('Error inserting data:', error);
